@@ -1,0 +1,35 @@
+<svg width="320" height="200" viewBox="0 0 320 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="320" height="200" rx="12" fill="#f9f0d7"/>
+  <rect x="10" y="10" width="300" height="180" rx="8" fill="white" stroke="#0a5614" stroke-width="2"/>
+  
+  <!-- Traditional Medicine Symbol -->
+  <g transform="translate(40, 40)">
+    <circle cx="30" cy="30" r="25" fill="#0a5614" opacity="0.1"/>
+    <path d="M30 10L33 20H43L35 26L38 36L30 31L22 36L25 26L17 20H27L30 10Z" fill="#0a5614"/>
+    <text x="30" y="50" text-anchor="middle" fill="#0a5614" font-size="8" font-weight="bold">AYUSH</text>
+  </g>
+  
+  <!-- Arrow -->
+  <path d="M90 60H130" stroke="#d2ae2e" stroke-width="3" marker-end="url(#arrowhead)"/>
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#d2ae2e"/>
+    </marker>
+  </defs>
+  
+  <!-- Modern Medicine Symbol -->
+  <g transform="translate(150, 40)">
+    <circle cx="30" cy="30" r="25" fill="#017be8" opacity="0.1"/>
+    <rect x="25" y="15" width="10" height="30" fill="#017be8"/>
+    <rect x="15" y="25" width="30" height="10" fill="#017be8"/>
+    <text x="30" y="50" text-anchor="middle" fill="#017be8" font-size="8" font-weight="bold">ICD-11</text>
+  </g>
+  
+  <!-- Integration Text -->
+  <text x="160" y="130" text-anchor="middle" fill="#0a5614" font-size="14" font-weight="bold">
+    Unified Healthcare Integration
+  </text>
+  <text x="160" y="150" text-anchor="middle" fill="#666" font-size="12">
+    Traditional Medicine ⟷ Modern Standards
+  </text>
+</svg>
