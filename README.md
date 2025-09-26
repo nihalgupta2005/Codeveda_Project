@@ -2,6 +2,13 @@
 
 > Bridging Traditional AYUSH Medicine with Modern Healthcare through Intelligent Dual Coding
 
+## UI
+
+![alt text](<image/Screenshot from 2025-09-23 22-20-29.png>)
+![alt text](<image/Screenshot from 2025-09-23 22-20-41.png>)
+![alt text](<image/Screenshot from 2025-09-23 22-20-51.png>)
+![alt text](<image/Screenshot from 2025-09-24 22-59-00.png>)
+
 ## 🏥 Overview
 
 CodeVeda is a comprehensive healthcare technology platform that seamlessly integrates traditional AYUSH (Ayurveda, Yoga, Unani, Siddha, and Homeopathy) medicine with modern biomedicine through intelligent dual coding using NAMASTE and ICD-11 standards.
