@@ -14,14 +14,30 @@ export const authenticateToken = async (req, res, next) => {
       });
     }
 
-    // Verify token with Supabase
-    const { data: { user }, error } = await supabase.auth.getUser(token);
+    // Support mock tokens for local testing when Supabase auth is bypassed
+    const mockUserMap = {
+      'mock-token-admin': 'bb8060fb-0bd1-410c-a6df-a44825c3bc15',
+      'mock-token-doctor': 'd06edf44-447e-46d7-911d-20746d4559df',
+      'mock-token-patient': '1339f35a-4eba-4d8c-9db0-4d456d5abe1b'
+    };
+
+    let user;
     
-    if (error || !user) {
-      return res.status(403).json({ 
-        error: 'Invalid token', 
-        message: 'Token verification failed' 
-      });
+    if (mockUserMap[token]) {
+      const userId = mockUserMap[token];
+      const userEmail = token.replace('mock-token-', '') + '@codeveda.com';
+      user = { id: userId, email: userEmail };
+    } else {
+      // Verify token with Supabase
+      const { data: { user: supabaseUser }, error } = await supabase.auth.getUser(token);
+      
+      if (error || !supabaseUser) {
+        return res.status(403).json({ 
+          error: 'Invalid token', 
+          message: 'Token verification failed' 
+        });
+      }
+      user = supabaseUser;
     }
 
     // Get user profile from database using admin client

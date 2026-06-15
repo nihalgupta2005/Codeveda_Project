@@ -49,20 +49,45 @@ async function createDemoUsers() {
       const { data: authData, error: authError } = await supabase.auth.admin.createUser({
         email: user.email,
         password: user.password,
-        email_confirm: true // Auto-confirm email
+        email_confirm: true, // Auto-confirm email
+        user_metadata: {
+          full_name: user.full_name,
+          role: user.role
+        }
       });
 
       if (authError) {
+        if (authError.message.toLowerCase().includes('already')) {
+          console.log(`   ⚠️  User ${user.email} already exists`);
+          const { data: existingUsers } = await supabase.auth.admin.listUsers();
+          const existingUser = existingUsers.users.find(u => u.email === user.email);
+          if (existingUser) {
+            const { error: profileError } = await supabase
+              .from('users')
+              .upsert({
+                id: existingUser.id,
+                email: user.email,
+                full_name: user.full_name,
+                role: user.role
+              });
+            if (profileError) {
+              console.log(`   ❌ Profile error for ${user.email}:`, profileError.message);
+            } else {
+              console.log(`   ✅ Profile updated for ${user.email}`);
+            }
+          }
+          continue;
+        }
         console.error(`❌ Auth error for ${user.email}:`, authError.message);
         continue;
       }
 
       console.log(`✅ Auth user created: ${authData.user.id}`);
 
-      // Create profile in users table
+      // Create/update profile in users table
       const { data: profileData, error: profileError } = await supabase
         .from('users')
-        .insert([
+        .upsert([
           {
             id: authData.user.id,
             email: user.email,
@@ -77,7 +102,7 @@ async function createDemoUsers() {
         continue;
       }
 
-      console.log(`✅ Profile created for ${user.full_name}`);
+      console.log(`✅ Profile created/updated for ${user.full_name}`);
       console.log('---');
       
     } catch (error) {

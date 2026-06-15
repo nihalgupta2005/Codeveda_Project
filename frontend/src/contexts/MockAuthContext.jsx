@@ -19,30 +19,30 @@ export const AuthProvider = ({ children }) => {
   // Mock users for testing
   const mockUsers = {
     'admin@codeveda.com': {
-      id: '1',
+      id: 'bb8060fb-0bd1-410c-a6df-a44825c3bc15',
       email: 'admin@codeveda.com',
       profile: {
-        id: '1',
+        id: 'bb8060fb-0bd1-410c-a6df-a44825c3bc15',
         full_name: 'Admin User',
         role: 'admin',
         email: 'admin@codeveda.com'
       }
     },
     'doctor@codeveda.com': {
-      id: '2', 
+      id: 'd06edf44-447e-46d7-911d-20746d4559df', 
       email: 'doctor@codeveda.com',
       profile: {
-        id: '2',
+        id: 'd06edf44-447e-46d7-911d-20746d4559df',
         full_name: 'Dr. Kumar',
         role: 'doctor',
         email: 'doctor@codeveda.com'
       }
     },
     'patient@codeveda.com': {
-      id: '3',
+      id: '1339f35a-4eba-4d8c-9db0-4d456d5abe1b',
       email: 'patient@codeveda.com', 
       profile: {
-        id: '3',
+        id: '1339f35a-4eba-4d8c-9db0-4d456d5abe1b',
         full_name: 'Patient User',
         role: 'patient',
         email: 'patient@codeveda.com'
@@ -64,10 +64,13 @@ export const AuthProvider = ({ children }) => {
     await new Promise(resolve => setTimeout(resolve, 500));
     
     if (mockUsers[email] && (password === 'admin123' || password === 'doctor123' || password === 'patient123')) {
-      const mockUser = mockUsers[email];
+      const mockUser = {
+        ...mockUsers[email],
+        access_token: `mock-token-${mockUsers[email].profile.role}`
+      };
       setUser(mockUser);
       setUserProfile(mockUser.profile);
-      setSession({ user: mockUser, access_token: 'mock-token' });
+      setSession({ user: mockUser, access_token: `mock-token-${mockUser.profile.role}` });
       console.log('Mock signin successful:', mockUser.profile);
       setLoading(false);
       return { data: { user: mockUser }, error: null };

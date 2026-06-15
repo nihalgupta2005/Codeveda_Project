@@ -44,7 +44,7 @@ async function createDemoUsers() {
       });
 
       if (authError) {
-        if (authError.message.includes('already registered')) {
+        if (authError.message.toLowerCase().includes('already')) {
           console.log(`   ⚠️  User ${user.email} already exists`);
           
           // Get existing user and update profile
@@ -78,10 +78,10 @@ async function createDemoUsers() {
         continue;
       }
 
-      // Create user profile in database
+      // Update user profile in database with additional details
       const { error: profileError } = await supabaseAdmin
         .from('users')
-        .insert({
+        .upsert({
           id: authData.user.id,
           email: user.email,
           full_name: user.fullName,
@@ -94,7 +94,7 @@ async function createDemoUsers() {
       if (profileError) {
         console.log(`   ❌ Profile error for ${user.email}:`, profileError.message);
       } else {
-        console.log(`   ✅ Created successfully: ${user.email}`);
+        console.log(`   ✅ Profile updated/created successfully: ${user.email}`);
       }
 
     } catch (error) {

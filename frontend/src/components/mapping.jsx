@@ -105,12 +105,12 @@ export default function Mapping() {
 
     // Helper function to detect search type
     const detectSearchType = (term) => {
-        const upperTerm = term.toUpperCase();
+        const upperTerm = term.trim().toUpperCase();
         if (upperTerm.startsWith('NAM.') || upperTerm.includes('NAM.')) {
             return 'namaste_code';
         }
-        // Common ICD-11 patterns: letters followed by numbers, or just numbers with dots
-        if (/^[A-Z0-9]+[0-9.]*$/.test(upperTerm) && !upperTerm.startsWith('NAM')) {
+        // Common ICD-11 patterns: alphanumeric with dots, containing at least one number, length 3 to 10
+        if (/^[A-Z0-9.]{3,10}$/.test(upperTerm) && /[0-9]/.test(upperTerm)) {
             return 'icd11_code';
         }
         return 'diagnosis_name';
