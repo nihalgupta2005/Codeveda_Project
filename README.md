@@ -2,7 +2,12 @@
 
 > Bridging Traditional AYUSH Medicine with Modern Healthcare through Intelligent Dual Coding
 
+**🌐 Live Deployments:**
+* **Vercel:** [https://codeveda-project.vercel.app/](https://codeveda-project.vercel.app/)
+* **Netlify:** [https://codevedaproject.netlify.app](https://codevedaproject.netlify.app)
+
 CodeVeda is an advanced, production-ready healthcare technology platform that integrates traditional AYUSH systems (Ayurveda, Yoga, Unani, Siddha, and Homeopathy) with modern biomedicine. It provides doctors, healthcare professionals, and administrators with an intelligent dual-coding system mapping NAMASTE (National AYUSH Morbidity and Standardized Terminology Electronic) and ICD-11 (International Classification of Diseases, 11th Revision) standards.
+
 
 ---
 
@@ -149,7 +154,7 @@ The backend runs as a continuous Express process.
 ### 2. Frontend Deployment (Netlify / Vercel)
 The React client must be built to static HTML/JS/CSS assets and uploaded to a static server.
 
-#### **Option A: Netlify (Recommended)**
+#### **Option A: Netlify**
 1. Register or log in to [Netlify](https://netlify.com/).
 2. Choose **Add New Site** -> **Import an Existing Project** -> **GitHub**.
 3. Choose the `codeveda` repository.
@@ -166,6 +171,21 @@ The React client must be built to static HTML/JS/CSS assets and uploaded to a st
    ```text
    /*   /index.html   200
    ```
+
+#### **Option B: Vercel (Recommended)**
+1. Register or log in to [Vercel](https://vercel.com/).
+2. Click **New Project** and import the `codeveda` repository.
+3. Configure the project settings:
+   - **Framework Preset**: Vite (detected automatically)
+   - **Root Directory**: `frontend`
+   - **Build Command**: `npm run build`
+   - **Output Directory**: `dist`
+4. Add the environment variables:
+   - `VITE_SUPABASE_URL`: Your Supabase Project URL.
+   - `VITE_SUPABASE_ANON_KEY`: Your Supabase Anon Key.
+   - `VITE_API_URL`: The URL of your deployed backend Express server (e.g., `https://codeveda-api.up.railway.app/api`).
+5. Click **Deploy**. Vercel will build the React app and deploy it.
+6. Single Page App (SPA) routing handling is pre-configured via the [frontend/vercel.json](file:///c:/Users/Nihal%20Gupta/OneDrive/Desktop/Code/codeveda/frontend/vercel.json) file included in the repository.
 
 ---
 
