@@ -1,6 +1,7 @@
 
 
 import image1 from './images/image1.png';
+import image2 from './images/image2.png';
 
 export default function Dashboard() {
     return (
@@ -256,7 +257,7 @@ function Info() {
                 </div>
 
                 <div className="p-10 rounded-2xl bg-gradient-to-br from-[#c9dbee] to-white shadow-lg">
-                    <img src="src/components/images/image2.png" alt="" className="w-150 h-80 rounded-2xl object-cover"  />
+                    <img src={image2} alt="" className="w-150 h-80 rounded-2xl object-cover"  />
                 </div>
 
             </div>
