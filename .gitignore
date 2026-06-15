@@ -45,3 +45,6 @@ Desktop.ini
 doctor_token.txt
 tmp/
 temp/
+
+# Local Netlify folder
+.netlify
