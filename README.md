@@ -1,4 +1,4 @@
-# 🏥 CodeVeda — NAMASTE-ICD11 Dual-Medical Coding Platform
+## 🏥 CodeVeda — NAMASTE-ICD11 Dual-Medical Coding Platform
 
 > Bridging Traditional AYUSH Medicine with Modern Healthcare through Intelligent Dual Coding
 
