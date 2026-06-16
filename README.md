@@ -14,7 +14,7 @@ CodeVeda is an advanced, production-ready healthcare technology platform that in
 ## 🎨 User Interface & Experience
 The platform features a modern, responsive user interface built using React and styled with a customized theme designed for clinical environments.
 
-* **Dashboard**: Unified workspace displaying summary cards for code mappings, recent patient visits, active users, and system audit logs.
+***Dashboard**: Unified workspace displaying summary cards for code mappings, recent patient visits, active users, and system audit logs.
 * **Code Mapping & Lookups**: A database search interface for looking up mapping between AYUSH codes and modern ICD-11 classifications with real-time confidence scores.
 * **Electronic Health Records (EHR)**: Secure storage of patient encounters, diagnosis history, treatment plans, prescriptions, and administrative logs.
 * **Admin Center**: Dedicated panels for mapping management, role auditing, and user access control.
